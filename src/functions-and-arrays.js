@@ -80,6 +80,7 @@ function averageWordLength(wordsArray) {
   if (wordsArray.length === 0) {
     return null;
   } else {
+    // sum up all the letters first and divide by amount of elements
     return wordsArray.join('').length / wordsArray.length;
   }
 }
@@ -101,11 +102,14 @@ const wordsUnique = [
 
 function uniquifyArray(wordsArray) {
   let wordsArraySorted = wordsArray.sort();
-  console.log(wordsArraySorted);
-  for (let i = 0; i < wordsArraySorted.length - 1; i++) {
-    if (wordsArraySorted[i + 1] === wordsArraySorted[i]) {
-      wordsArraySorted.splice(i, 1);
-      i--;
+  if (wordsArray.length === 0) {
+    return null;
+  } else {
+    for (let i = 0; i < wordsArraySorted.length - 1; i++) {
+      if (wordsArraySorted[i + 1] === wordsArraySorted[i]) {
+        wordsArraySorted.splice(i, 1);
+        i--;
+      }
     }
   }
   console.log(wordsArraySorted);
@@ -124,6 +128,22 @@ const wordsFind = [
   'disobedience'
 ];
 
+function doesWordExist(wordsArray, word) {
+  if (wordsArray.length === 0) {
+    return null;
+  } else {
+    for (let i = 0; i < wordsArray.length; i++) {
+      if (wordsArray[i] === word) {
+        return true;
+      } else if (wordsArray.includes(word)) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+  }
+}
+
 // Iteration #7: Count repetition
 const wordsCount = [
   'machine',
@@ -138,6 +158,20 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(wordsArray, word) {
+  let countRepetition = 0;
+  if (wordsArray.length === 0) {
+    return 0;
+  } else {
+    for (let i = 0; i < wordsArray.length; i++) {
+      if (wordsArray[i] === word) {
+        countRepetition++;
+      }
+    }
+  }
+  return countRepetition;
+}
 
 // Iteration #8: Bonus
 
